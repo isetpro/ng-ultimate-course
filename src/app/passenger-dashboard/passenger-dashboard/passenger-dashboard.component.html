@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <app-passenger-count></app-passenger-count>
+    <app-passenger-detail></app-passenger-detail>
+    <h3>Airline Passengers</h3>
+    <ul>
+
+        <li *ngFor="let passenger of passengers; index as i">
+            <span
+                class="status"
+                [class]="passenger.checkedIn"
+            ></span>
+            {{i}}:{{passenger.fullname}}
+        </li>
+    </ul>
+</div>

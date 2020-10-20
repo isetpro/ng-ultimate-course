@@ -1,0 +1,46 @@
+{
+    "passengers": [
+        {
+            "id": 12341243,
+            "fullname": "Amanda",
+            "checkedIn": true,
+            "checkInDate": 1603211435291,
+            "children": [
+                {
+                    "name": "Pete",
+                    "age": 8
+                },
+                {
+                    "name": "Arthur",
+                    "age": 12
+                }
+            ]
+        },
+        {
+            "id": 14546,
+            "fullname": "Jack",
+            "checkedIn": false
+        },
+        {
+            "id": 45282,
+            "fullname": "Bill",
+            "checkedIn": true,
+            "checkInDate": 1603211125291
+        },
+        {
+            "id": 12355441243,
+            "fullname": "Doe John",
+            "checkedIn": false,
+            "children": [
+                {
+                    "name": "Bowie",
+                    "age": 15
+                },
+                {
+                    "name": "Jackson",
+                    "age": 2
+                }
+            ]
+        },
+    ]
+}

@@ -126,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ultimate-course"
+    }
+  },
+  "defaultProject": "ultimate-course",
+  "cli": {
+    "analytics": false
+  }
 }
