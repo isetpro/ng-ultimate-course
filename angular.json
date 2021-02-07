@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "ng-ultimate-course"
+  "defaultProject": "ng-ultimate-course",
+  "cli": {
+    "analytics": false
+  }
 }
