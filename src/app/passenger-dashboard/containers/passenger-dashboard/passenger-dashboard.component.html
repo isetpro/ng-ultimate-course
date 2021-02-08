@@ -1,8 +1,8 @@
 <div class="wrapper">
     <h3>Airline Passengers</h3>
-    <app-passenger-count [items$]="passengers"></app-passenger-count>
+    <app-passenger-count [items$]="passengers$"></app-passenger-count>
     <app-passenger-detail
-        *ngFor="let passenger of passengers | async"
+        *ngFor="let passenger of passengers$ | async"
         [detail]="passenger"
         (remove)="handleRemove($event)"
         (edit)="handleEdit($event)"

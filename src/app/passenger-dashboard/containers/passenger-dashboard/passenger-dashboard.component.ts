@@ -11,20 +11,20 @@ import {PassengerDashboardService} from '../../passenger-dashboard.service'
 
 })
 export class PassengerDashboardComponent implements OnInit {
+  subscription = new Subscription()
 
-  passengers: Observable<IPassenger[]> = of([])
+  passengers$: Observable<IPassenger[]> = of([])
   constructor(private passengerService: PassengerDashboardService) { }
 
   ngOnInit(): void {
-    this.passengers = this.passengerService.getPassengers()
+    this.passengers$ = this.passengerService.passengers$
   }
 
   handleRemove(id: number) {
-    console.log(id)
-
+    this.passengerService.removePassenger(id)
   }
   handleEdit(passenger: IPassenger) {
-    console.log(passenger)
+    this.passengerService.updatePassenger(passenger)
   }
 
 }
