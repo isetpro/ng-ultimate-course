@@ -18,14 +18,15 @@
         Check in date:
         {{passenger?.checkInDate ? (passenger?.checkInDate | date | uppercase) : 'Not checked in'}}
     </div>
-    <div class="children">
-        Children: {{passenger?.children?.length || '0'}}
-    </div>
+  
 
     <button (click)="toggleEdit()">
         {{editing ? 'Done' : 'Edit'}}
     </button>
     <button (click)="removePassenger(passenger!)">
         Delete
+    </button>
+    <button [routerLink]="['passenger', passenger?.id]">
+        View
     </button>
 </div>

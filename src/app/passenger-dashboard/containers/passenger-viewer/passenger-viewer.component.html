@@ -1,0 +1,5 @@
+<app-passenger-form
+    *ngIf="(passenger$ | async) as passenger"
+    [passenger]="passenger"
+></app-passenger-form>
+<button appBackButton>Back</button>

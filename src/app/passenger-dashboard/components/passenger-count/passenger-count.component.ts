@@ -1,13 +1,14 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core'
 import {Observable, of} from 'rxjs'
-import {filter, map, mergeAll, take, toArray} from 'rxjs/operators'
+import {count, filter, map, mergeAll, reduce, take, tap, toArray} from 'rxjs/operators'
 import {IPassenger} from '../../models/passenger.interface'
 
 @Component({
   selector: 'app-passenger-count',
   template: `
     <div >
-      Total passengers: {{(checkedInPassengersNumber$ | async)}}/{{(items$ |async)?.length}}
+      Checked-In passengers: 
+      {{(checkedInPassengersNumber$ | async)?.length}}/{{(items$ |async)?.length}}
     </div>
   `,
   styles: [
@@ -17,16 +18,12 @@ import {IPassenger} from '../../models/passenger.interface'
 })
 export class PassengerCountComponent implements OnInit {
   @Input() items$: Observable<IPassenger[]> = of([])
-  checkedInPassengersNumber$: Observable<number> = of(0)
+  checkedInPassengersNumber$: Observable<IPassenger[]> = of([])
   constructor() { }
 
   ngOnInit(): void {
     this.checkedInPassengersNumber$ = this.items$.pipe(
-      take(1),
-      mergeAll(),
-      filter(passenger => passenger.checkedIn),
-      toArray(),
-      map(v => v.length)
+      map(passengers => passengers.filter(passenger => passenger.checkedIn)),
     )
   }
 
