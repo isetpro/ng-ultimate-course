@@ -1,6 +1,100 @@
-<form>
-    form!
-    <div>
-        {{passenger | json}}
+<form
+    *ngIf="passenger"
+    #form="ngForm"
+    (ngSubmit)="onSubmit(form.value, form.valid)"
+    novalidate
+    class="form-group"
+>
+    {{passenger | json}}
+    <br>
+    {{form.value | json}}
+    <hr>
+    <div class="form-field">
+        <label for="fullname">Passenger name:</label>
+        <div class="flex-clearfix"></div>
+        <input
+            type="text"
+            name="fullname"
+            id="fullname"
+            #fullname="ngModel"
+            required
+            [ngModel]="passenger!.fullname"
+        >
     </div>
+    <div
+        *ngIf="fullname.errors?.required && fullname.dirty"
+        class="form-field error"
+    >Passenger name is required
+    </div>
+
+    <div class="form-field">
+        <label for="id">Passenger ID:</label>
+        <div class="flex-clearfix"></div>
+        <input
+            type="number"
+            name="id"
+            id="id"
+            #id="ngModel"
+            required
+            [ngModel]="passenger!.id"
+        >
+    </div>
+        <div
+            *ngIf="id.errors?.required && id.dirty"
+            class="form-field error"
+        >Passenger ID is required
+        </div>
+    <div class="form-field">
+        <label for="checkedIn">
+            CheckedIn:
+        </label>
+        <div class="flex-clearfix"></div>
+
+        <input
+            type="checkbox"
+            name="checkedIn"
+            id="checkedIn"
+            [ngModel]="passenger!.checkedIn"
+            (ngModelChange)="toggleCheckIn($event)"
+        >
+
+    </div>
+    <div
+        *ngIf="form.value.checkedIn || passenger!.checkedIn"
+        class="form-field"
+    >
+        <label for="checkInDate">Check in date:</label>
+        <div class="flex-clearfix"></div>
+        <input
+            type="number"
+            name="checkInDate"
+            id="checkInDate"
+            [ngModel]="passenger!.checkInDate"
+        >
+    </div>
+    <div class="form-field">
+        <label for="baggage">Luggage:</label>
+        <div class="flex-clearfix"></div>
+
+        <select
+            [ngModel]="passenger!.baggage"
+            id="baggage"
+            name="baggage"
+        >
+            <option
+                *ngFor="let b of baggage"
+                [ngValue]="b.key"
+            >{{b.value}}</option>
+        </select>
+    </div>
+    <div class="buttons">
+        <button
+            type="submit"
+            [disabled]="form.invalid"
+        >
+            Update
+        </button>
+        <button appBackButton>Back</button>
+    </div>
+
 </form>

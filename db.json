@@ -1,30 +1,31 @@
 {
-    "passengers": [
-        {
-            "id": 12341243,
-            "fullname": "Amanda",
-            "checkedIn": true,
-            "checkInDate": 1603211435291,
-            "baggage": ""
-        },
-        {
-            "id": 14546,
-            "fullname": "Jack",
-            "checkedIn": false,
-            "baggage": ""
-        },
-        {
-            "id": 45282,
-            "fullname": "Bill",
-            "checkedIn": true,
-            "checkInDate": 1603211125291,
-            "baggage": ""
-        },
-        {
-            "id": 12355441243,
-            "fullname": "Doe John",
-            "checkedIn": false,
-            "baggage": ""
-        }
-    ]
+  "passengers": [
+    {
+      "fullname": "Amanda1",
+      "id": 12341243,
+      "checkedIn": true,
+      "baggage": "hand-only",
+      "checkInDate": 1612982387288
+    },
+    {
+      "fullname": "Jack",
+      "id": 14546,
+      "checkedIn": true,
+      "baggage": "hand-only",
+      "checkInDate": 1612982367870
+    },
+    {
+      "fullname": "Bill",
+      "id": 45282,
+      "checkedIn": true,
+      "baggage": "hold-only",
+      "checkInDate": 1603211125291
+    },
+    {
+      "id": 12355441243,
+      "fullname": "Doe John",
+      "checkedIn": false,
+      "baggage": "hand-hold"
+    }
+  ]
 }

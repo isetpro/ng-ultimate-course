@@ -28,4 +28,9 @@ export class PassengerViewerComponent implements OnInit {
 
   }
 
+  onUpdatePassenger(passenger: IPassenger){
+    console.log('From parent', passenger);
+    this.passengerService.updatePassenger(passenger)
+  }
+
 }

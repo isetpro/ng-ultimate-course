@@ -1,3 +1,5 @@
+import {IBaggage} from './baggage.interface'
+
 export interface IPassenger {
     id: number
     fullname: string
