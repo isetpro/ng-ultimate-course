@@ -1,7 +1,7 @@
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http'
 import {Injectable} from '@angular/core'
-import {BehaviorSubject, Observable, throwError} from 'rxjs'
-import {catchError, map} from 'rxjs/operators'
+import {BehaviorSubject, iif, Observable, of, throwError} from 'rxjs'
+import {catchError, map, mergeMap, switchMap, tap} from 'rxjs/operators'
 import {IPassenger} from './models/passenger.interface'
 
 @Injectable({
@@ -14,6 +14,8 @@ export class PassengerDashboardService {
   readonly passengers$ = this._passengers.asObservable();
 
   constructor(private http: HttpClient) {
+    console.log('service constructor')
+
     this.initPassengersFromAPI().subscribe(passengers => this.passengers = passengers)
   }
 
@@ -24,14 +26,21 @@ export class PassengerDashboardService {
   }
 
   getPassenger(id: number) {
+
     return this.passengers$.pipe(
+      mergeMap(passengers =>
+        iif(
+          () => passengers.length === 0,
+          this.initPassengersFromAPI(),
+          of(passengers))
+      ),
       map(passengers => {
-        const passenger = passengers.find(p => p.id === id)
+        const passenger = passengers?.find(p => p.id === id)
 
         if (passenger) {
           return passenger
         } else {
-          throw new Error("Passenger is not found")
+          throw new Error('Passenger has not found')
         }
       }),
       catchError(this.handleError)
@@ -95,8 +104,7 @@ export class PassengerDashboardService {
       console.error('An error occurred:', error.error.message)
     } else {
       console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`)
+        `Backend returned code ${error}`)
     }
     return throwError(
       'Something bad happened; please try again later.')

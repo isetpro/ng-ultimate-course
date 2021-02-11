@@ -39,11 +39,11 @@
             [ngModel]="passenger!.id"
         >
     </div>
-        <div
-            *ngIf="id.errors?.required && id.dirty"
-            class="form-field error"
-        >Passenger ID is required
-        </div>
+    <div
+        *ngIf="id.errors?.required && id.dirty"
+        class="form-field error"
+    >Passenger ID is required
+    </div>
     <div class="form-field">
         <label for="checkedIn">
             CheckedIn:
@@ -94,7 +94,10 @@
         >
             Update
         </button>
-        <button appBackButton>Back</button>
+        <button
+            type="button"
+            appBackButton
+        > Back</button>
     </div>
 
 </form>

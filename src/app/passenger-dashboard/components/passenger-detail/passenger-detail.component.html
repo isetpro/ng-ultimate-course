@@ -18,7 +18,7 @@
         Check in date:
         {{passenger?.checkInDate ? (passenger?.checkInDate | date | uppercase) : 'Not checked in'}}
     </div>
-  
+
 
     <button (click)="toggleEdit()">
         {{editing ? 'Done' : 'Edit'}}
@@ -26,7 +26,7 @@
     <button (click)="removePassenger(passenger!)">
         Delete
     </button>
-    <button [routerLink]="['passenger', passenger?.id]">
+    <button [routerLink]="[passenger?.id]">
         View
     </button>
 </div>

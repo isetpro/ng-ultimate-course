@@ -9,7 +9,7 @@ const routes: Routes = [
         component: PassengerDashboardComponent
     },
     {
-        path: 'passenger/:id',
+        path: ':id',
         component: PassengerViewerComponent
     }
 ]
